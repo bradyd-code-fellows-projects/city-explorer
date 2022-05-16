@@ -3,4 +3,15 @@ import './App.css';
 import axios from 'axios';
 import { } from 'react-bootstrap';
 
-//asdf
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      swData: [],
+      city: '',
+      error: false
+    }
+  }
+};
+
+export default App;

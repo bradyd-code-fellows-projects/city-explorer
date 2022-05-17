@@ -1,0 +1,40 @@
+h1 {
+  border: groove 2px blue;
+  width: fit-content;
+  margin: 0 auto 30px;
+  padding: 10px;
+}
+
+#cityForm {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+#formButton {
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+#lat-lon {
+  width: 500px;
+  border: 2px solid black;
+  margin: 5px auto;
+}
+
+#thisCity {
+  width: 65%;
+  margin: 5px;
+}
+
+#thisLat,
+#thisLon {
+  width: 45%;
+  margin: 5px;
+}
+
+#map {
+  border: groove 12px lightblue;
+  width: fit-content;
+  margin: 20px auto;
+}

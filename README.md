@@ -58,13 +58,13 @@ Actual time needed to complete: 50 mins
 
 #### Name of feature: Error
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 45 mins
 
-Start time:
+Start time: 3:21
 
-Finish time:
+Finish time: 4:06
 
-Actual time needed to complete:
+Actual time needed to complete: 45 mins
 
 ## Lab 07
 

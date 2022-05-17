@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Form, Button, ListGroup, Image } from 'react-bootstrap';
+import { Alert, Form, Button, ListGroup, Image } from 'react-bootstrap';
 
 import '../App/App.css';
 
@@ -14,19 +14,29 @@ class App extends React.Component {
       lat: '',
       lon: '',
       mapIsDisplaying: false,
-      mapSrc: '',
+      error: false
     }
   }
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
-    let cityUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
-    let cityInfo = await axios.get(cityUrl);
-    this.setState({
-      lat: cityInfo.data[0].lat,
-      lon: cityInfo.data[0].lon,
-      mapIsDisplaying: true
-    });
+    try {
+      let cityUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
+      let cityInfo = await axios.get(cityUrl);
+      this.setState({
+        lat: cityInfo.data[0].lat,
+        lon: cityInfo.data[0].lon,
+        mapIsDisplaying: true,
+        error: false
+      });
+    } catch (error) {
+      console.log('Error: ', error);
+      console.log('Error message: ', error.message);
+      this.setState({
+        error: true,
+        errorMessage: error.message
+      })
+    }
   }
 
   cityChange = (e) => {
@@ -56,20 +66,27 @@ class App extends React.Component {
 
         </Form>
 
-        <ListGroup id="lat-lon">
-          <ListGroup.Item variant="primary" id="thisCity">{this.state.city}</ListGroup.Item>
-          <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
-          <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
-        </ListGroup>
-        
-        <div id="map">
-        {this.state.mapIsDisplaying && <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city}></Image>}
-        </div>
+        {this.state.error ?
+          <Alert variant='danger' id="errorAlert">
+            <Alert.Heading>Error</Alert.Heading>
+            <p>{this.state.errorMessage}</p>
+          </Alert> :
+          (<>
+            <ListGroup id="lat-lon">
+              <ListGroup.Item variant="primary" id="thisCity">{this.state.city}</ListGroup.Item>
+              <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
+              <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
+            </ListGroup>
 
+
+            <div id="map">
+              {this.state.mapIsDisplaying && <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city}></Image>}
+            </div>
+          </>)
+        }
       </>
     );
   }
 }
-
 
 export default App;

@@ -20,15 +20,25 @@
 
 ## Lab 06 16 May 2022
 
-Name of feature: Set up
+### Name of feature: Set up
 
 Estimate of time needed to complete: 30 mins
 
 Start time: 2:30
 
-Finish time:
+Finish time: 3:30
 
-Actual time needed to complete:
+Actual time needed to complete: 1 hr
+
+### Name of feature: Locations
+
+Estimate of time needed to complete: 1.5 hours
+
+Start time: 3:45
+
+Finish time: 6:11
+
+Actual time needed to complete: 2 hrs 26mins
 
 <!-- ## Lab 07 17 May 2022
 

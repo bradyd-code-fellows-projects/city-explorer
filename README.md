@@ -18,13 +18,13 @@
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
-## Lab 06
+### Lab 06
 
 ![lab06-wrrc](src/img/lab06-WRRC.png)
 
-### 16 May 2022
+#### 16 May 2022
 
-#### Name of feature: Set up
+##### Name of feature: Set up
 
 Estimate of time needed to complete: 30 mins
 
@@ -34,7 +34,7 @@ Finish time: 3:30
 
 Actual time needed to complete: 1 hr
 
-#### Name of feature: Locations
+##### Name of feature: Locations
 
 Estimate of time needed to complete: 1.5 hours
 
@@ -44,9 +44,9 @@ Finish time: 6:11
 
 Actual time needed to complete: 2 hrs 26mins
 
-### 17 May 2022
+#### 17 May 2022
 
-#### Name of feature: Map
+##### Name of feature: Map
 
 Estimate of time needed to complete: 1 hour
 
@@ -56,7 +56,7 @@ Finish time: 1:40
 
 Actual time needed to complete: 50 mins
 
-#### Name of feature: Error
+##### Name of feature: Error
 
 Estimate of time needed to complete: 45 mins
 
@@ -66,7 +66,7 @@ Finish time: 4:06
 
 Actual time needed to complete: 45 mins
 
-## Lab 07
+### Lab 07
 
 ![lab07wrrc](src/img/lab07-wrrc.png)
 

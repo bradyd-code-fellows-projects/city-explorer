@@ -84,15 +84,15 @@ Actual time needed to complete: 1hr 45mins
 
 ![lab08-wrrc](src/img/lab08-wrrc.png)
 
-Name of feature: Movies
+Name of feature: Weather (live)
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 2 hours
 
-Start time:
+Start time: 6:30
 
-Finish time:
+Finish time: 9:00
 
-Actual time needed to complete:
+Actual time needed to complete: 2.5 hours
 
 <!-- ## Lab 09 1 May 2022
 
@@ -125,5 +125,7 @@ Actual time needed to complete: -->
 Lab 06 Web Request Response Cycle - Collaborated with [Cody Davis](https://github.com/Cozhee/)
 
 Lab 07 Web Request Response Cycle - Collaborated with [Dylan Ullrich](https://github.com/GetUllrichorDieTrying)
+
+Lab 08 Web Request Response Cycle - Collaborated with [Benjamin Small](https://github.com/BenjaminSmall94)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

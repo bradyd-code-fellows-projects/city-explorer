@@ -20,7 +20,7 @@
 
 ### Lab 06
 
-![lab06-wrrc](src/img/lab06-WRRC.png)
+![lab06-wrrc](src/img/lab06-wrrc.png)
 
 #### 16 May 2022
 
@@ -80,11 +80,13 @@ Finish time: 6:15
 
 Actual time needed to complete: 1hr 45mins
 
-## Lab 08 18 May 2022
+### Lab 08
+
+#### 18 May 2022
 
 ![lab08-wrrc](src/img/lab08-wrrc.png)
 
-Name of feature: Weather (live)
+##### Name of feature: Weather (live)
 
 Estimate of time needed to complete: 2 hours
 
@@ -94,23 +96,25 @@ Finish time: 9:00
 
 Actual time needed to complete: 2.5 hours
 
-<!-- ## Lab 09 1 May 2022
+#### 19 May 2022
 
-Name of feature:
+##### Name of feature: Movies
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 1 hour
 
-Start time:
+Start time: 
 
 Finish time:
 
 Actual time needed to complete:
 
-## Credit and Collaborations -->
+### Lab 09
 
-<!-- ## Lab 10 1 May 2022
+![lab09-wrrc](/src/img/lab09-wrrc.png)
 
-Name of feature:
+<!-- ### Lab 10
+
+##### Name of feature:
 
 Estimate of time needed to complete:
 
@@ -127,5 +131,7 @@ Lab 06 Web Request Response Cycle - Collaborated with [Cody Davis](https://githu
 Lab 07 Web Request Response Cycle - Collaborated with [Dylan Ullrich](https://github.com/GetUllrichorDieTrying)
 
 Lab 08 Web Request Response Cycle - Collaborated with [Benjamin Small](https://github.com/BenjaminSmall94)
+
+Lab 09 Web Request Response Cycle - Collaborated with [Sam Brindle](https://github.com/samBrindle)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

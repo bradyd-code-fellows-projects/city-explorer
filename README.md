@@ -70,21 +70,21 @@ Actual time needed to complete: 45 mins
 
 ![lab07wrrc](src/img/lab07-wrrc.png)
 
-Name of feature:
+Name of feature: Weather
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 1.5 hours
 
-Start time:
+Start time: 4:30
 
-Finish time:
+Finish time: 6:15
 
-Actual time needed to complete:
+Actual time needed to complete: 1hr 45mins
 
 ## Lab 08 18 May 2022
 
 ![lab08-wrrc](src/img/lab08-wrrc.png)
 
-Name of feature:
+Name of feature: Movies
 
 Estimate of time needed to complete:
 

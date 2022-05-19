@@ -21,15 +21,20 @@ class App extends React.Component {
     }
   }
 
+  // let cityWeatherData = await axios.get(`${weatherURL}?key=${process.env.WEATHER_API_KEY}&lat=${request.query.latitude}&lon=${request.query.longitude}`);
 
+  // let weatherData = await Axios.get(`https://api.weatherbit.io/v2.0/forecast/daily/weather?latitude=${cityData.data[0].lat}&longitude=${cityData.data[0].lon}`);
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
     try {
       let city_nameUrl = (`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city_name}&format=json`);
-      let weatherURL = (`${process.env.REACT_APP_SERVER}/weather?city=${this.state.city_name}`);
-      let weatherInfo = await axios.get(weatherURL);
+
+      
       let city_nameInfo = await axios.get(city_nameUrl);
+      let weatherURL = (`${process.env.REACT_APP_SERVER}/weather?city=${this.state.city_name}&lat=${city_nameInfo.data[0].lat}&lon=${city_nameInfo.data[0].lon}`);
+      let weatherInfo = await axios.get(weatherURL);
+
       this.setState({
         lat: city_nameInfo.data[0].lat,
         lon: city_nameInfo.data[0].lon,
@@ -85,7 +90,7 @@ class App extends React.Component {
               <ListGroup.Item variant="primary" id="thisCity">{this.state.city_name}</ListGroup.Item>
               <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
               <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
-              <Weather showWeather={this.state.showWeather} weather={this.state.weather}/>
+              <Weather showWeather={this.state.showWeather} weather={this.state.weather} />
             </ListGroup>
 
 

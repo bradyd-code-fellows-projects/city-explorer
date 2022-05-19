@@ -30,7 +30,7 @@ class App extends React.Component {
     try {
       let city_nameUrl = (`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city_name}&format=json`);
 
-      
+
       let city_nameInfo = await axios.get(city_nameUrl);
       let weatherURL = (`${process.env.REACT_APP_SERVER}/weather?city=${this.state.city_name}&lat=${city_nameInfo.data[0].lat}&lon=${city_nameInfo.data[0].lon}`);
       let weatherInfo = await axios.get(weatherURL);
@@ -93,10 +93,10 @@ class App extends React.Component {
               <Weather showWeather={this.state.showWeather} weather={this.state.weather} />
             </ListGroup>
 
-
-            <div id="map">
-              {this.state.mapIsDisplaying && <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city_name}></Image>}
-            </div>
+            {this.state.mapIsDisplaying &&
+              <div id="map">
+                <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city_name}></Image>
+              </div>}
           </>)
         }
       </>

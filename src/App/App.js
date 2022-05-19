@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from '../Components/Weather/Weather.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Alert, Form, Button, ListGroup, Image } from 'react-bootstrap';
@@ -10,24 +11,32 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: '',
+      city_name: '',
       lat: '',
       lon: '',
       mapIsDisplaying: false,
-      error: false
+      error: false,
+      weather: [],
+      showWeather: false
     }
   }
+
+
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
     try {
-      let cityUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
-      let cityInfo = await axios.get(cityUrl);
+      let city_nameUrl = (`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city_name}&format=json`);
+      let weatherURL = (`${process.env.REACT_APP_SERVER}/weather?city=${this.state.city_name}`);
+      let weatherInfo = await axios.get(weatherURL);
+      let city_nameInfo = await axios.get(city_nameUrl);
       this.setState({
-        lat: cityInfo.data[0].lat,
-        lon: cityInfo.data[0].lon,
+        lat: city_nameInfo.data[0].lat,
+        lon: city_nameInfo.data[0].lon,
         mapIsDisplaying: true,
-        error: false
+        error: false,
+        weather: weatherInfo.data,
+        showWeather: true
       });
     } catch (error) {
       console.log('Error: ', error);
@@ -42,7 +51,7 @@ class App extends React.Component {
   cityChange = (e) => {
     this.setState({
       cityInfo: [],
-      city: e.target.value,
+      city_name: e.target.value,
     });
   }
 
@@ -73,14 +82,15 @@ class App extends React.Component {
           </Alert> :
           (<>
             <ListGroup id="lat-lon">
-              <ListGroup.Item variant="primary" id="thisCity">{this.state.city}</ListGroup.Item>
+              <ListGroup.Item variant="primary" id="thisCity">{this.state.city_name}</ListGroup.Item>
               <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
               <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
+              <Weather showWeather={this.state.showWeather} weather={this.state.weather}/>
             </ListGroup>
 
 
             <div id="map">
-              {this.state.mapIsDisplaying && <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city}></Image>}
+              {this.state.mapIsDisplaying && <Image id="cityMap" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=11`} alt={this.state.city_name}></Image>}
             </div>
           </>)
         }

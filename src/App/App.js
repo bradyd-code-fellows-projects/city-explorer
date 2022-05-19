@@ -1,5 +1,6 @@
 import React from 'react';
 import Weather from '../Components/Weather/Weather.js'
+import Movies from '../Components/Movies/Movies.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Alert, Form, Button, ListGroup, Image } from 'react-bootstrap';
@@ -17,23 +18,26 @@ class App extends React.Component {
       mapIsDisplaying: false,
       error: false,
       weather: [],
-      showWeather: false
+      showWeather: false,
+      moviesDisplaying: false,
+      movies: []
     }
   }
-
-  // let cityWeatherData = await axios.get(`${weatherURL}?key=${process.env.WEATHER_API_KEY}&lat=${request.query.latitude}&lon=${request.query.longitude}`);
-
-  // let weatherData = await Axios.get(`https://api.weatherbit.io/v2.0/forecast/daily/weather?latitude=${cityData.data[0].lat}&longitude=${cityData.data[0].lon}`);
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
     try {
       let city_nameUrl = (`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city_name}&format=json`);
-
-
       let city_nameInfo = await axios.get(city_nameUrl);
+
       let weatherURL = (`${process.env.REACT_APP_SERVER}/weather?city=${this.state.city_name}&lat=${city_nameInfo.data[0].lat}&lon=${city_nameInfo.data[0].lon}`);
       let weatherInfo = await axios.get(weatherURL);
+
+      let moviesURL = (`${process.env.REACT_APP_SERVER}/movies?city_name=${this.state.city_name}`);
+      let movieInfo = await axios.get(moviesURL);
+
+      console.log(moviesURL);
+      console.log('movieInfo.data:', movieInfo.data);
 
       this.setState({
         lat: city_nameInfo.data[0].lat,
@@ -41,7 +45,9 @@ class App extends React.Component {
         mapIsDisplaying: true,
         error: false,
         weather: weatherInfo.data,
-        showWeather: true
+        showWeather: true,
+        movies: movieInfo.data,
+        moviesDisplaying: true
       });
     } catch (error) {
       console.log('Error: ', error);
@@ -91,6 +97,7 @@ class App extends React.Component {
               <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
               <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
               <Weather showWeather={this.state.showWeather} weather={this.state.weather} />
+              <Movies moviesDisplaying={this.state.moviesDisplaying} movies={this.state.movies} />
             </ListGroup>
 
             {this.state.mapIsDisplaying &&

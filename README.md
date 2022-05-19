@@ -102,11 +102,11 @@ Actual time needed to complete: 2.5 hours
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 1:30
 
-Finish time:
+Finish time: 3:00
 
-Actual time needed to complete:
+Actual time needed to complete: 1.5 hours
 
 ### Lab 09
 

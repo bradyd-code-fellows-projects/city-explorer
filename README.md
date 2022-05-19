@@ -80,7 +80,9 @@ Finish time:
 
 Actual time needed to complete:
 
-<!-- ## Lab 08 18 May 2022
+## Lab 08 18 May 2022
+
+![lab08-wrrc](src/img/lab08-wrrc.png)
 
 Name of feature:
 
@@ -90,7 +92,7 @@ Start time:
 
 Finish time:
 
-Actual time needed to complete: -->
+Actual time needed to complete:
 
 <!-- ## Lab 09 1 May 2022
 

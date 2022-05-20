@@ -1,17 +1,34 @@
 import React from 'react';
 import '../Weather/Weather.css'
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Table } from 'react-bootstrap';
 
 class Weather extends React.Component {
+
 
   render() {
     let weatherInfo = this.props.weather;
 
     let weatherInfoArr = weatherInfo.map((day, idx) => {
-      return <ListGroup.Item key={idx}>
-        Forecast for {day.date}:
-        Low temperature: {day.low},
-        High temperature: {day.high} with {day.description}</ListGroup.Item>
+      return(
+        <Table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Low Temp</th>
+              <th>High Temp</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr key={idx}>
+              <td key={1}>{day.date}</td>
+              <td key={2}>{day.low}</td>
+              <td key={3}>{day.high}</td>
+              <td key={4}>{day.description}</td>
+            </tr>
+          </tbody>
+        </Table>
+      )
     })
     return (
       <>
@@ -22,3 +39,8 @@ class Weather extends React.Component {
 }
 
 export default Weather;
+
+//day.date
+//day.low
+//day.high
+//day.description

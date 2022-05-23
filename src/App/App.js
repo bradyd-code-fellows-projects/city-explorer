@@ -1,9 +1,10 @@
 import React from 'react';
 import Weather from '../Components/Weather/Weather.js'
 import Movies from '../Components/Movies/Movies.js'
+import WeatherDay from '../Components/Weather/WeatherDay.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Alert, Form, Button, ListGroup, Image } from 'react-bootstrap';
+import { Alert, Form, Button, ListGroup, Image, Table } from 'react-bootstrap';
 
 import '../App/App.css';
 
@@ -20,7 +21,11 @@ class App extends React.Component {
       weather: [],
       showWeather: false,
       moviesDisplaying: false,
-      movies: []
+      movies: [],
+      weatherIsDisplaying: false,
+      latLonIsDisplaying: false,
+      weatherModalIsDisplaying: false,
+      SelectedDay: {}
     }
   }
 
@@ -36,9 +41,6 @@ class App extends React.Component {
       let moviesURL = (`${process.env.REACT_APP_SERVER}/movies?city_name=${this.state.city_name}`);
       let movieInfo = await axios.get(moviesURL);
 
-      console.log(moviesURL);
-      console.log('movieInfo.data:', movieInfo.data);
-
       this.setState({
         lat: city_nameInfo.data[0].lat,
         lon: city_nameInfo.data[0].lon,
@@ -47,7 +49,9 @@ class App extends React.Component {
         weather: weatherInfo.data,
         showWeather: true,
         movies: movieInfo.data,
-        moviesDisplaying: true
+        moviesDisplaying: true,
+        weatherIsDisplaying: true,
+        latLonIsDisplaying: true
       });
     } catch (error) {
       console.log('Error: ', error);
@@ -63,6 +67,29 @@ class App extends React.Component {
     this.setState({
       cityInfo: [],
       city_name: e.target.value,
+    });
+  }
+
+  openWeatherModalHandler = (date, low, high, description, icon) => {
+    console.log('foobar');
+    // let dayWeather = {
+    //   weatherModalIsDisplaying: true,
+    //   date: date,
+    //   low: low,
+    //   high: high,
+    //   forecast: description,
+    //   icon: icon
+    // }
+    // console.log(dayWeather);
+    // this.setState({
+    //   weatherModalIsDisplaying: true,
+    //   SelectedDay: dayWeather
+    // })
+  }
+
+  closeWeatherModalHandler = () => {
+    this.setState({
+      weatherModalIsDisplaying: false
     });
   }
 
@@ -92,13 +119,38 @@ class App extends React.Component {
             <p>{this.state.errorMessage}</p>
           </Alert> :
           (<>
-            <ListGroup id="lat-lon">
+            {this.state.latLonIsDisplaying && <ListGroup id="lat-lon">
               <ListGroup.Item variant="primary" id="thisCity">{this.state.city_name}</ListGroup.Item>
               <ListGroup.Item variant="success" id="thisLat">Latitude: {this.state.lat}</ListGroup.Item>
               <ListGroup.Item variant="info" id="thisLon">Longitude: {this.state.lon}</ListGroup.Item>
-              <Weather showWeather={this.state.showWeather} weather={this.state.weather} />
-              <Movies moviesDisplaying={this.state.moviesDisplaying} movies={this.state.movies} />
-            </ListGroup>
+            </ListGroup>}
+
+            {this.state.weatherIsDisplaying &&
+              <Table id="weatherTable">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Low Temp</th>
+                    <th>High Temp</th>
+                    <th>Forecast</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <Weather
+                    weather={this.state.weather}
+                  />
+                </tbody>
+              </Table>
+            }
+            <WeatherDay
+            weatherModalIsDisplaying={this.state.weatherModalIsDisplaying}
+            SelectedDay={this.state.SelectedDay}
+            closeWeatherModalHandler={this.state.closeWeatherModalHandler}
+            />
+
+            {this.state.moviesDisplaying && 
+            <Movies moviesDisplaying={this.state.moviesDisplaying} movies={this.state.movies} />
+            }
 
             {this.state.mapIsDisplaying &&
               <div id="map">

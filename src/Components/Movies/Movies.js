@@ -1,26 +1,36 @@
 import React from 'react';
 import '../Movies/Movies.css'
-import { Image, ListGroup } from 'react-bootstrap';
+import { Container, Carousel } from 'react-bootstrap';
 
 class Movies extends React.Component {
 
   render() {
     let moviesInfo = this.props.movies;
     let moviesArr = moviesInfo.map((movie, idx) => {
-      return <ListGroup key={idx} id="moviesList">
-        {movie.posterpath &&
-          <Image
-            src={movie.posterpath}
+      return (
+        <Carousel.Item key={idx}>
+          <img
+            className='carousel-image'
+            src={movie.image_url}
             alt={movie.title}
           />
-        }
-
-        <ListGroup.Item>{movie.title}</ListGroup.Item>
-        <ListGroup.Item>{movie.overview}</ListGroup.Item>
-        <ListGroup.Item>{movie.releasedOn}</ListGroup.Item>
-      </ListGroup>
+          <Carousel.Caption id="carousel-caption">
+            <h3>{movie.title}</h3>
+            <h4>Released on: {movie.releasedOn}</h4>
+            <h4>Summary: {movie.overview}</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+      )
     })
-    return moviesArr;
+    return (
+      <>
+        <Container id="Carousel-container">
+          <Carousel>
+            {moviesArr}
+          </Carousel>
+        </Container>
+      </>
+    )
   }
 }
 

@@ -1,3 +1,24 @@
-#moviesList {
-  border: solid 2px red;
+#Carousel-container {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.carousel-image {
+  border: solid 2px black;
+  height: 500px;
+  width: inherit;
+  margin: 0 auto 50px auto;
+}
+
+#Carousel-item {
+  margin: 0 auto;
+  width: auto;
+}
+
+#carousel-caption {
+  position: relative;
+  left: auto;
+  right: auto;
+  color: black;
+  border: groove 8px rgb(95, 90, 90);
 }

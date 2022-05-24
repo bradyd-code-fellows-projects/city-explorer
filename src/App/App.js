@@ -25,9 +25,10 @@ class App extends React.Component {
       weatherIsDisplaying: false,
       latLonIsDisplaying: false,
       weatherModalIsDisplaying: false,
-      SelectedDay: {}
+      selectedDay: {}
     }
   }
+
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
@@ -70,21 +71,12 @@ class App extends React.Component {
     });
   }
 
-  openWeatherModalHandler = (date, low, high, description, icon) => {
-    console.log('foobar');
-    // let dayWeather = {
-    //   weatherModalIsDisplaying: true,
-    //   date: date,
-    //   low: low,
-    //   high: high,
-    //   forecast: description,
-    //   icon: icon
-    // }
-    // console.log(dayWeather);
-    // this.setState({
-    //   weatherModalIsDisplaying: true,
-    //   SelectedDay: dayWeather
-    // })
+  openWeatherModalHandler = (day) => {
+    this.setState({
+      weatherModalIsDisplaying: true,
+      selectedDay: day
+    })
+    console.log(this.state.selectedDay)
   }
 
   closeWeatherModalHandler = () => {
@@ -138,18 +130,20 @@ class App extends React.Component {
                 <tbody>
                   <Weather
                     weather={this.state.weather}
+                    openWeatherModalHandler={this.openWeatherModalHandler}
+                    closeWeatherModalHandler={this.closeWeatherModalHandler}
                   />
                 </tbody>
               </Table>
             }
             <WeatherDay
-            weatherModalIsDisplaying={this.state.weatherModalIsDisplaying}
-            SelectedDay={this.state.SelectedDay}
-            closeWeatherModalHandler={this.state.closeWeatherModalHandler}
+              weatherModalIsDisplaying={this.state.weatherModalIsDisplaying}
+              selectedDay={this.state.selectedDay}
+              closeWeatherModalHandler={this.closeWeatherModalHandler}
             />
 
-            {this.state.moviesDisplaying && 
-            <Movies moviesDisplaying={this.state.moviesDisplaying} movies={this.state.movies} />
+            {this.state.moviesDisplaying &&
+              <Movies moviesDisplaying={this.state.moviesDisplaying} movies={this.state.movies} />
             }
 
             {this.state.mapIsDisplaying &&

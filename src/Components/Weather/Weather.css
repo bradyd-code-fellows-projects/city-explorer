@@ -1,3 +1,10 @@
+#weatherTable {
+  width: 800px;
+  margin: 30px auto;
+  border: double 5px black;
+  padding: 50px;
+}
+
 #date {
   color: blue;
 }

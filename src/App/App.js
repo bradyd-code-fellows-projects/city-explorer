@@ -41,6 +41,7 @@ class App extends React.Component {
 
       let moviesURL = (`${process.env.REACT_APP_SERVER}/movies?city_name=${this.state.city_name}`);
       let movieInfo = await axios.get(moviesURL);
+      console.log(movieInfo.data);
 
       this.setState({
         lat: city_nameInfo.data[0].lat,

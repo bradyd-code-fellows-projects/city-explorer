@@ -3,19 +3,6 @@ import '../Weather/Weather.css'
 import '../Weather/WeatherDay.js'
 
 class Weather extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     selectedDay: {}
-  //   }
-  // }
-
-// activateWeatherModal = (day) => {
-//   this.setState({
-//     selectedDay: day
-//   })
-//   this.props.openWeatherModalHandler(this.props.date, this.props.low, this.props.high, this.props.forecast, this.props.icon);
-// }
 
 render() {
   let weatherInfo = this.props.weather;
